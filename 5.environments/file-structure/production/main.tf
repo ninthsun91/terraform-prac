@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     profile        = "terraform"
     bucket         = "landing-tf-state"
-    key            = "practice/managing-multiple-environments/workspace/terraform.tfstate"
+    key            = "practice/managing-multiple-environments/production/terraform.tfstate"
     region         = "ap-northeast-2"
     dynamodb_table = "terraform-state-locking"
     encrypt        = true
@@ -28,16 +28,16 @@ variable "db_pass" {
 }
 
 locals {
-  environment_name = terraform.workspace
+  environment_name = "production"
 }
 
 module "donut" {
-  source = "../../4.modules/web-app"
+  source = "../../../4.modules/web-app"
 
   # Input Variables
   app_name         = "donut-1"
   environment_name = local.environment_name
-  create_dns_zone  = terraform.workspace == "production" ? true : false
+  create_dns_zone  = false
   domain           = "donut.place"
   instance_type    = "t2.micro"
   bucket_prefix    = "landingdonut-tf-practice-${local.environment_name}"
