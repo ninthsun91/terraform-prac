@@ -51,13 +51,8 @@ variable "instance_type" {
 
 ## S3 Variables
 
-variable "bucket_name" {
-  description = "Name of S3 bucket"
-  type        = string
-}
-
 variable "bucket_prefix" {
-  description = "Prefix for S3 bucket objects"
+  description = "Prefix for S3 bucket name"
   type        = string
 }
 

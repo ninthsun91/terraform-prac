@@ -15,7 +15,7 @@ locals {
 
 resource "aws_route53_record" "root" {
   zone_id = local.dns_zone_id
-  name    = "${local.subdoain}${var.domain}"
+  name    = "${local.subdomain}${var.domain}"
   type    = "A"
 
   alias {

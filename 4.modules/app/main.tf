@@ -18,7 +18,7 @@ terraform {
 
 provider "aws" {
   profile = "terraform"
-  region = var.region
+  region = "ap-northeast-2"
 }
 
 variable "db_pass_1" {
@@ -42,7 +42,7 @@ module "donut_production" {
   create_dns_zone  = true
   domain           = "donut.place"
   instance_type    = "t2.small"
-  bucket_name      = "donut-tf-practice-production"
+  bucket_prefix    = "landingdonut-tf-practice-1"
   db_name          = "donutprod"
   db_user          = "donut"
   db_pass          = var.db_pass_1
@@ -57,7 +57,7 @@ module "donut_development" {
   create_dns_zone  = false
   domain           = "donut.place"
   instance_type    = "t2.small"
-  bucket_name      = "donut-tf-practice-development"
+  bucket_prefix    = "landingdonut-tf-practice-2"
   db_name          = "donutdev"
   db_user          = "donut"
   db_pass          = var.db_pass_2
