@@ -1,0 +1,1 @@
+instance_name = "terraform-prac2"
